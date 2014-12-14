@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="/mystyle.css"> 
+
+        <script src='http://code.jquery.com/jquery-1.7.2.min.js'></script>
+        <script src='http://localhost:3000/socket.io/socket.io.js'></script>
+       
+        <script>
+            var socket = io.connect('//localhost:3000');
+            
+            socket.on('accX', function(data) {
+                $('#line1').html(data.accX);
+
+            });
+
+              socket.on('accY', function(data) {
+                $('#line2').html(data.accY);
+            });
+
+              socket.on('accZ', function(data) {
+                $('#line3').html(data.accZ);
+            }); 
+
+
+              socket.on('key', function(data) {
+                $('#line4').html(data.key);
+            });
+
+               socket.on('magX', function(data) {
+                $('#line5').html(data.magX);
+            });
+
+               socket.on('magY', function(data) {
+                $('#line6').html(data.magY);
+            });
+
+               socket.on('magZ', function(data) {
+                $('#line7').html(data.magZ);
+            });
+
+            socket.on('error', function() { console.error(arguments) });
+            socket.on('message', function() { console.log(arguments) });
+
+            function myFunction(){
+                var x = document.getElementById('line1');
+                alert(x.innerHTML);
+            }
+
+            myFunction();
+           
+
+        </script>
+
+    </head>
+    <body>
+        <p onload="myFunction()"></p>
+        <img src="http://www.w3schools.com/images/w3schools_green.jpg">
+
+        <p> Accelerometer Data2: X = </p> <p id='line1'></p>
+        <br/>
+        <p> Accelerometer Data: Y = </p>
+        <p id='line2' ></p>
+        <br/>
+        <p> Accelerometer Data: Z = </p>
+        <p id='line3' ></p>
+        <br/>
+        <p> Button Left = </p>
+        <p id='line4' ></p>
+                <br/>
+        <p> Button Left = </p>
+        <p id='line5' ></p>
+                <br/>
+        <p> Button Left = </p>
+        <p id='line6' ></p>
+                <br/>
+        <p> Button Left = </p>
+        <p id='line7' ></p>
+    </body>
+</html>
+
+
+
+
